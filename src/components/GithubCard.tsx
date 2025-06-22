@@ -1,13 +1,33 @@
 import GitHubIcon from "../icons/GitHubIcon";
 import StarIcon from "../icons/StarIcon";
 import type { GitHubUser } from "../types";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { toggleFavorite } from "../store/favoritesSlice";
 
 const GithubCard = ({ user }: { user: GitHubUser }) => {
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector((state) => state.favorites.favorites);
+
+  const isFavorite = favorites.some((fav) => fav.id === user.id);
+
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(user));
+  };
+
   return (
     <div className="mx-auto w-full max-w-2xs rounded-xl bg-white p-6 shadow-lg">
       <div className="flex justify-between">
-        <button>
-          <StarIcon className="size-6 fill-white stroke-gray-600 transition-colors hover:fill-yellow-300 hover:stroke-yellow-300" />
+        <button
+          onClick={handleToggleFavorite}
+          className="transition-transform hover:scale-110"
+        >
+          <StarIcon
+            className={`size-6 transition-colors ${
+              isFavorite
+                ? "fill-yellow-400 stroke-yellow-400"
+                : "fill-white stroke-gray-600 hover:fill-yellow-300 hover:stroke-yellow-300"
+            }`}
+          />
         </button>
         <a href={user.html_url} target="_blank">
           <GitHubIcon className="size-6 fill-gray-600 transition-colors hover:fill-gray-800" />
