@@ -133,10 +133,6 @@ npm run preview
 3. **Cursor Pagination**: More complex but more efficient than simple page numbers
 4. **Custom Icons vs Library**: Created custom SVG components for better control and smaller bundle
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
 
 _Developed by Mohamed Khalifa :)_
