@@ -7,6 +7,7 @@ import PaginationControls from "../components/PaginationControls";
 import { useSearchParams } from "react-router";
 import LoadingSpinner from "../components/LoadingSpinner";
 import SearchIcon from "../icons/SearchIcon";
+import Helmet from "../components/Helmet";
 
 const USERS_PER_PAGE = 10;
 
@@ -126,38 +127,40 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 dark:bg-gray-900">
-      <SearchInput value={searchTerm} onChange={setSearchTerm} />
+    <Helmet title="Home">
+      <div className="min-h-screen bg-gray-50 p-6 dark:bg-gray-900">
+        <SearchInput value={searchTerm} onChange={setSearchTerm} />
 
-      {loading ? (
-        <LoadingSpinner />
-      ) : error ? (
-        <p className="text-center font-semibold text-red-600">{error}</p>
-      ) : filteredUsers.length === 0 ? (
-        <>
-          <SearchIcon className="mx-auto mb-4 size-12 text-gray-400" />
-          <p className="text-center font-semibold text-gray-600 dark:text-gray-400">
-            There are no users matching your search.
-          </p>
-        </>
-      ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {filteredUsers.map((user) => (
-            // Card Component
-            <GithubCard key={user.id} user={user} />
-          ))}
-        </div>
-      )}
+        {loading ? (
+          <LoadingSpinner />
+        ) : error ? (
+          <p className="text-center font-semibold text-red-600">{error}</p>
+        ) : filteredUsers.length === 0 ? (
+          <>
+            <SearchIcon className="mx-auto mb-4 size-12 text-gray-400" />
+            <p className="text-center font-semibold text-gray-600 dark:text-gray-400">
+              There are no users matching your search.
+            </p>
+          </>
+        ) : (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            {filteredUsers.map((user) => (
+              // Card Component
+              <GithubCard key={user.id} user={user} />
+            ))}
+          </div>
+        )}
 
-      {/* Pagination Component */}
-      <PaginationControls
-        since={since}
-        onFirst={() => setParams({ since: "0" })}
-        onPrev={handlePrev}
-        onNext={handleNext}
-        disablePrev={sinceHistory.length === 0}
-      />
-    </div>
+        {/* Pagination Component */}
+        <PaginationControls
+          since={since}
+          onFirst={() => setParams({ since: "0" })}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          disablePrev={sinceHistory.length === 0}
+        />
+      </div>
+    </Helmet>
   );
 };
 
