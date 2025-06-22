@@ -125,8 +125,7 @@ const Home = () => {
   });
 
   return (
-    <div className="p-6">
-      {/* Search Component */}
+    <div className="min-h-screen bg-gray-50 p-6 dark:bg-gray-900">
       <SearchInput value={searchTerm} onChange={setSearchTerm} />
 
       {loading ? (
@@ -134,7 +133,7 @@ const Home = () => {
       ) : error ? (
         <p className="text-center font-semibold text-red-600">{error}</p>
       ) : filteredUsers.length === 0 ? (
-        <p className="text-center font-semibold text-gray-600">
+        <p className="text-center font-semibold text-gray-600 dark:text-gray-400">
           There are no users matching your search.
         </p>
       ) : (
