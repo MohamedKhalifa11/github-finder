@@ -6,6 +6,10 @@ Try the app from [here](https://github-finder-m11.vercel.app/)
 
 ![Screenshot](preview.png)
 
+## Demo
+
+https://github.com/user-attachments/assets/1543e69e-6494-4255-8b98-dfe5f98b6574
+
 ## Features
 
 - Fetch and display GitHub users with cursor-based pagination using the official API
