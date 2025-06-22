@@ -6,6 +6,7 @@ import SearchInput from "../components/SearchInput";
 import PaginationControls from "../components/PaginationControls";
 import { useSearchParams } from "react-router";
 import LoadingSpinner from "../components/LoadingSpinner";
+import SearchIcon from "../icons/SearchIcon";
 
 const USERS_PER_PAGE = 10;
 
@@ -133,9 +134,12 @@ const Home = () => {
       ) : error ? (
         <p className="text-center font-semibold text-red-600">{error}</p>
       ) : filteredUsers.length === 0 ? (
-        <p className="text-center font-semibold text-gray-600 dark:text-gray-400">
-          There are no users matching your search.
-        </p>
+        <>
+          <SearchIcon className="mx-auto mb-4 size-12 text-gray-400" />
+          <p className="text-center font-semibold text-gray-600 dark:text-gray-400">
+            There are no users matching your search.
+          </p>
+        </>
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {filteredUsers.map((user) => (
