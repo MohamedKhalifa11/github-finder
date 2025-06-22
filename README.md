@@ -126,13 +126,6 @@ npm run preview
 3. **Search Enhancement**: Could add advanced search filters (location, repositories, etc.)
 4. **Caching**: Could implement query caching for better performance
 
-### Trade-offs Made
-
-1. **Client-side Search vs Server-side**: Chose client-side for better UX but limited to current page data
-2. **Redux vs Context**: Used Redux for favorites to demonstrate state management skills and Context for themes to avoid unnecessary complexity
-3. **Cursor Pagination**: More complex but more efficient than simple page numbers
-4. **Custom Icons vs Library**: Created custom SVG components for better control and smaller bundle
-
 ---
 
 _Developed by Mohamed Khalifa :)_
