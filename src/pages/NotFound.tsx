@@ -2,12 +2,18 @@ import { Link } from "react-router";
 
 const NotFound = () => {
   return (
-    <>
-      <div>Not Found</div>
-      <Link className="text-blue-500 hover:underline" to={"/"}>
-        Go Back To Home
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+      <h1 className="mb-4 text-6xl font-bold">404</h1>
+      <p className="mb-6 text-xl">
+        Sorry, the page you are looking for does not exist.
+      </p>
+      <Link
+        to="/"
+        className="rounded bg-gray-600 px-4 py-2 text-white transition hover:bg-gray-700"
+      >
+        Go to Home
       </Link>
-    </>
+    </div>
   );
 };
 
