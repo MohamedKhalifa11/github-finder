@@ -6,12 +6,15 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./store/store.ts";
 import LoadingSpinner from "./components/LoadingSpinner.tsx";
+import { ThemeProvider } from "./context/ThemeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={<LoadingSpinner />} persistor={persistor}>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   </StrictMode>,
